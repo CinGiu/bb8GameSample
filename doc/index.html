@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+	<title>Cinelli 2016</title>
+
+</head>
+<body>
+	<div class="container" id="container">
+
+		<div class="row">
+
+			<div class="col-md-12" style="margin-bottom:50px;">
+				<h1>Progetto Grafica AA 2015/2016</h1>
+                <h3>Sviluppo di un 3D Game con openGL</h3>
+                <h3> <a href="mailto:giulio.cinelli@studio.unibo.it">Giulio Cinelli</a></h3>
+			</div>
+			<div class="col-md-12">
+				<div class="well well-lg scheda-well">
+					<h2>Obiettivo</h2>
+					<p>L'obiettivo di questo progetto è la realizzazione di un gioco 3D in ambiente PC/Linux che sfrutti le librerie di OpenGL e SDL.</p>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="well well-lg scheda-well" class="col-md-6">
+					<h2>Il Gioco</h2>
+					<p>Il gioco che si è deciso di realizzare è molto semplice e intuitivo. All'utente viene presentato il robottino BB8 e una scena formata da una piattaforma sospesa nello spazio.</p>
+                    <p>Il robottino ha piena capacità di movimento (BB8 verrà spiegato nel dettaglio nel prossimo paragrafo) e si deve muovere sulla piattaforma per andare a catturare le spade laser poste ai vertici del quadrato.</p>
+                    <p>Nel caso in cui BB8 esca dai bordi della piattaforma cadrà e si ritroverà al centro per ricominciare la cattura delle spade.</p>
+                    <p>L'utente ha inoltre un punteggio iniziale posto a 0 che si incrementerà di 5 unità nel caso si catturi una spada laser e di decrementerà di 10 in caso cada dalla piattaforma.</p>
+                    <p>Il gioco termina quando tutte le spade sono state catturate e, in caso di punteggio positivo, il giocatore avrà vinto.</p>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="well well-lg scheda-well">
+					<h2>BB8</h2>
+					<p>Il soggetto del gioco è ispirato al nuovo robottino presentato nella trilogia di Star Wars.</p>
+					<p>Si è pensato a questo in quanto presenta degli aspetti interessanti di movimento e comportamento.</p>
+					<p>La mash di base è stata reperita online sotto forma di file obj e di tutte le immagini che formano la texture per la livrea.</p>
+					<p>Per gestire il movimento è stata maneggiata con il tool Blender in maniera da dividere la parte di testa da quella di corpo sferico. In questo modo è stato possibile movere in maniera indipendente le due parti.</p>
+                    <p>Il corpo è una sfera che ruota su se stessa attorno al centro. Per garantire un'usabilità in gioco è possibile ruotare la sfera in avanti e di lato tramite il classico comando WASD da tastiera.
+                        Il movimento laterale è stato limitato volutamente ad una torsione. Si è preferito rispetto ad avere la completa sfericità (con A ed D la sfera punta verso destra o sinistra ma non avanza) per rendere più gradevole il gioco.</p>
+					<p>Per il movimento della testa è stato invece speso più tempo per renderlo il più possibile realistico. Questa parte è infatti posizionata sopra la sfera del corpo e, come si vede nel film, si sposta sulla sfera in base al movimento. Se ad esempio il robot va in avanti, la testa tenderà a spostarsi indietro perchè non legata strettamente alla rotazione della sfera ma al movimento dell'intero oggetto.</p>
+					<p>Inoltre la testa ha una escursione massima (per non farla cadere a terra) e tende a tornare nella sua posizione di partenza in maniera "elastica".</p>
+					<p>Anche se praticamente inutile ai fini del gioco è stato implementato anche il salto del robottino seguendo le leggi del moto parabolico.</p>
+					<p>Ultimo aspetto implementato per rendere la testa più dinamica è stata la rotazione laterale (come se il robottino guardasse a destra o sinistra) tramite i tasti Q e E della tastiera.</p>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="well well-lg scheda-well">
+					<img src="img/BB8.jpg"/>
+					<p style="text-align:center">Il robottino BB8</p>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="well well-lg scheda-well" class="col-md-6">
+							<h2>La scena</h2>
+							<p>La scena è composta da pochi elementi essenziali. Il robottino, come detto in precedenza, si muove su una piattaforma sospesa quadrata di dimensione casuale. </p>
+							<p>Ai vertici della piattaforma sono poste 4 spade laser realizzate anch'esse con mash scaricate online e opportunamente ridimensionate. Due spade sono poste su due scatole e per riuscire a catturarle bisogna saltare.</p>
+							<p>L'intero modo è formato da una sfera che racchiude tutti gli elementi e rende finita la visione dell'utente</p>
+							<p>Nella scena sono presenti, a discrezione dell'utente, due modalità di illuminazione. La prima è formata da fonte lumiosa posta sopra la piattaforma che illumina in maniera omnidirezionale. Questo ha permesso di avere luce su tutti i punti con intensità maggiore al centro della piattaforma.</p>
+							<p>La seconda, premento il tasto z, prevede la creazione di un "sistema solare" formato dal sole e la luna che si alternano generando un effetto giorno-notte su tutti gli oggetti.</p>
+							<p>All'utente sono presentati altri elementi esterni alla scena di gioco realizzati in 2D. Il primo è la barra del punteggio posta in alto nella schermata nella quale viene aggiornato lo score utente man mano che si gioca e viene indicato il termine del gioco e se si è vinto o perso quando vengono catturate tutte le spade.</p>
+							<p>Il secondo è l'indicatore degli FPS che il render si appresta ad applicare. Questo è indicato da una barra verticale che si alza sul lato sinistro della schermata.</p>
+							<p>L'ultimo elemento è dato dalla mappa di navigazione della scena. È stata realizzata tramite una visuale 2D dall'alto della posizione del robot sulla piattaforma e indica posizione delle rimanenti spade da catturare. Quando viene catturata una spada si vedrà scomparire anche su questa visuale il punto colorato corrispondente.</p>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="well well-lg scheda-well">
+							<img style="width:100%" src="img/scena1.png"/>
+							<p style="text-align:center">Una scena di gioco</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="well well-lg scheda-well" >
+					<h2>Texture</h2>
+					<p>La texturizzazione degli elementi è stata realizzata a seconda dell'oggetto. </p>
+                    <p>Per quanto riguarda il cielo è stato texturato con una immagine di stelle e generata in maniera automatica la mappatura dei punti tramite le coordinate S e T. Si è poi applicata una GL_SPHERE_MAP per rendere l'effetto sferico voluto.</p>
+                    <p>Diversamente per gli altri oggetti si è applicata una texture mapping manuale dando le coordinate texture.</p>
+                    <p>Per l'immagine studente e il pavimento (texturato con una immagine di sabbia per creare l'effetto deserto), essendo quadrati è bastato generare i punti texture durante la creazione della mash. In questo caso è stato anche decisa la normale al fine di garantire una illuminazione coerente dell'ambiente.</p>
+                    <p>Per quanto riguarda invece le mash scaricate da internet, il file .OBJ garantisce punti (v), facce (f) e vertici texture (vt) su cui andare a mappare l'immagine fornita nel pacchetto. Per questo è stato realizzato un parser che leggesse il file .OBJ e che creasse le strutture dati per la realizzazione delle mash e delle texture.</p>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="well well-lg scheda-well" >
+					<h2>Installazione</h2>
+					<p>Il programma viene compilato con il make file dato a disposizione e non richiede libbrerie aggiuntive a parte OpenGL, SDL e GLUT</p>
+					<blockquote>$ make</blockquote>
+					<p>Per l'eseguzione viene generato un eseguibile chiamato BB8_Cinelli</p>
+					<blockquote>$ ./BB8_Cinelli</blockquote>
+
+				</div>
+			</div>
+
+
+			<div class="col-md-12">
+				<div class="well well-lg scheda-well" class="col-md-6">
+					<h2>Comandi</h2>
+					<br/>
+					<div class="row">
+						<div class="col-md-2"><div class="key">W</div></div>
+						<div class="col-md-10"><p>Avanti. Fa avanzare in avanti il robottino. Il corpo ruota in avanti. La testa tende a muoversi all'indietro.</p></div>
+					</div>
+					<hr/>
+					<div class="row">
+						<div class="col-md-2"><div class="key">A</div></div>
+						<div class="col-md-10"><p>Effettua una torsione della sfera verso sinistra. Determina la direzione del robot ma senza avanzare. La testa tende ad andare a destra.</p></div>
+					</div>
+					<hr/>
+					<div class="row">
+						<div class="col-md-2"><div class="key">S</div></div>
+						<div class="col-md-10"><p>Indietro. Fa retrocedere il robottino. Il corpo ruota indietro. La testa tende a muoversi verso la parte frontale del robot.</p></div>
+					</div>
+					<hr/>
+					<div class="row">
+						<div class="col-md-2"><div class="key">D</div></div>
+						<div class="col-md-10"><p>Effettua una torsione della sfera verso destra. Determina la direzione del robot ma senza avanzare. La testa tende ad andare a sinistra.</p></div>
+					</div>
+					<hr/>
+					<div class="row">
+						<div class="col-md-2"><div class="key">Q</div></div>
+						<div class="col-md-10"><p>Effettua una torsione verso sinistra della testa. Attualmente inutile e solamente grafica.</p></div>
+					</div>
+					<hr/>
+					<div class="row">
+						<div class="col-md-2"><div class="key">E</div></div>
+						<div class="col-md-10"><p>Effettua una torsione verso destra della testa. Attualmente inutile e solamente grafica.</p></div>
+					</div>
+					<hr/>
+					<div class="row">
+						<div class="col-md-2"><div class="key">Z</div></div>
+						<div class="col-md-10"><p>Camia il sistema di illuminazione. Giorno-notte oppure illuminazione fissa.</p></div>
+					</div>
+					<hr/>
+					<div class="row">
+						<div class="col-md-2"><div class="key">M</div></div>
+						<div class="col-md-10"><p>Apre il menu utente completo della descrizione di ogni tasto e degli obbiettivi di gioco.</p></div>
+					</div>
+					<hr/>
+					<div class="row">
+						<div class="col-md-2"><div class="key" style="width:100%">SPACE</div></div>
+						<div class="col-md-10"><p>Salto. Il robot effettua un salto verso l'alto.</p></div>
+					</div>
+					<hr/>
+					<div class="row">
+						<div class="col-md-2"><div class="key">F1</div></div>
+						<div class="col-md-10"><p>Cambio di vusuale. Si scorre tra le varie visuali della camera.</p></div>
+					</div>
+					<hr/>
+					<div class="row">
+						<div class="col-md-2"><div class="key">F2</div></div>
+						<div class="col-md-10"><p>Visione wirefreame. È possibile visualizzare le mash senza texture e con solamente gli edge che al compongono.</p></div>
+					</div>
+					<hr/>
+
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="well well-lg scheda-well" >
+					<h2>Problemi</h2>
+					<p>Durante la realizzazione sono stati riscontrati alcuni problemi su cui ci si è speso più tempo. Ne analizzeremo alcuni di seguito. </p>
+                    <p>Le luci hanno dato qualche problema sia per quando riguarda il posizionamento e la direzione sia sopratutto per quanto riguarda la riflessione sugli oggetti. Non è stato chiaro fin da subito il ruolo dei GL_COLOR_MATERIAL e delle normali alle facce. Entrambi sono stati risolti analizzando il codice fornito negli esempi e seguendo le guide online. Alcune prove di luci direzionali sulle spade lase sono state effettuate ma non sono incluse nella versione presentata perchè appesantivano di molto l'eseguzione.</p>
+                    <p>Le problematiche più gravi ed evidenti sono quelle relative al texturing map relativo ad oggetti complessi come BB8 o le spade laser. In questi casi le mash sono realizzate con facce triangolari o quadrate a seconda della zona dell'oggetto. Per ovviare a questo durante la creazione della struttura dati relativa alla mash si è dovuto dividere ogni quadrato in due triangoli. Questo funziona bene senza texturizzazione, ma non per quanto riguarda la texture che risulta applicata in maniera corretta come posizione ma frastagliata nei dettagli.</p>
+                    <p>Non avendo un JoyPad disponibile non è stato possibile testare i comandi se non da tastiera. </p>
+                    <p></p>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="well well-lg scheda-well" >
+					<h2>Conclusioni</h2>
+					<p>Il progetto è stato molto interessante. Ha dato la possibilità di confrontarsi con molti problemi tipici della realizzazione 3D di scene dinamiche come la prospettiva e la texturizzazione.</p>
+					<p>In particolare, grazie all'espediente del gioco, è stato possibile applicare alcune regole di fisica in un mondo 3D per poter muovere l'oggetto in maniera realistica. È cosi stato possibile studiare nel dettaglio i problemi relativi al rendering in tempo reale e alla prospettiva.</p>
+					<p>La parte meno soddisfacente è stata quella relativa alla texturizzazione degli oggetti per i quali non si è riusciti a renderli perfettamente come da modello.</p>
+					<p></p>
+				</div>
+			</div>
+		</div>
+		<footer>
+			Giulio Cinelli - Informatica Magistale 2° Anno - AA 2015/2016
+		</footer>
+	</div>
+</body>
+</html>

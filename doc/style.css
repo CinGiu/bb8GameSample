@@ -1,0 +1,97 @@
+body{
+   background-color: #e9eaed;
+}
+#container{
+   width: 1000px;
+   margin: auto;
+   background-color: whitesmoke;
+}
+blockquote{
+	background-color:#ccc;
+  	font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
+}
+#main_header_img{
+   height: 150px;
+}
+#main_header_img img{
+   max-height: 170px;
+   width: 100%;
+   opacity: 0.8;
+}
+.bg{
+   /*background-color: blue;*/
+}
+.my-btn-right{
+   position: relative;
+   float:right;
+}
+.left-menu{
+   padding: 0
+}
+.header_list{
+
+   padding-bottom: 0;
+}
+.key{
+	BORDER-RIGHT: #aaa 4px solid;
+    PADDING-RIGHT: 3px;
+    BORDER-TOP: #ccc 2px solid;
+    PADDING-LEFT: 3px;
+    BACKGROUND: #eee;
+    PADDING-BOTTOM: 5px;
+    BORDER-LEFT: #bbb 3px solid;
+    COLOR: #000;
+    PADDING-TOP: 5px;
+    BORDER-BOTTOM: #888 5px solid;
+    FONT-FAMILY: arial, helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+	text-align: center;
+	width: 40px;
+	margin: auto;
+}
+footer{
+   border-top: 1px solid black;
+   text-align: center;
+   font-size: 1.2em;
+   height: 50px;
+   padding-top: 10px;
+}
+.scheda-well{
+   background-color: white;
+   opacity: 1;
+}
+p{
+   font-size: 1.2em;
+   text-align: justify;
+
+}
+.navbar{
+   border-bottom: 2px solid black;
+   background-color: #ffcc66;
+   font-size: 1.4em;
+   font-weight: bold;
+}
+.navbar li:hover{
+   background-color:white;
+}
+.myactive{
+   background-color: #ffaa00;
+}
+h1{
+   text-align: center;
+}
+h2{
+   border-bottom: 1px solid black;
+}
+h3{
+   text-align: center;
+
+}
+.panel-default>.panel-heading{
+   background-color: #ffcc66;
+}
+
+td:first-child{
+   font-weight: bold;
+}
